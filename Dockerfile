@@ -5,7 +5,7 @@
 
 ARG PYTHON_VERSION="3.6.4"
 
-FROM python:${PYTHON_VERSION}-alpine3.7
+FROM ubuntu:latest
 
 ARG CLI_VERSION
 
@@ -25,6 +25,10 @@ LABEL maintainer="Microsoft" \
       org.label-schema.vcs-url="https://github.com/Azure/azure-cli.git" \
       org.label-schema.docker.cmd="docker run -v \${HOME}/.azure:/root/.azure -it microsoft/azure-cli:$CLI_VERSION"
 
+
+RUN apt-get update
+RUN apt-get -y install python$PYTHON_VERSION python-pip python3-venv git
+
 # bash gcc make openssl-dev libffi-dev musl-dev - dependencies required for CLI
 # openssh - included for ssh-keygen
 # ca-certificates
@@ -34,9 +38,9 @@ LABEL maintainer="Microsoft" \
 # pip wheel - required for CLI packaging
 # jmespath-terminal - we include jpterm as a useful tool
 # libintl and icu-libs - required by azure devops artifact (az extension add --name azure-devops)
-RUN apk add --no-cache bash openssh ca-certificates jq curl openssl git zip \
- && apk add --no-cache --virtual .build-deps gcc make openssl-dev libffi-dev musl-dev linux-headers \
- && apk add --no-cache libintl icu-libs \
+RUN apt-get -y install bash openssh-server ca-certificates jq curl openssl git zip \
+ && apt-get -y install gcc make libssl1.0-dev libffi-dev musl-dev \
+ && apt-get -y install libc6-dev libicu-dev \
  && update-ca-certificates
 
 ARG JP_VERSION="0.1.3"
