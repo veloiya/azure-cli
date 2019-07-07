@@ -2,8 +2,9 @@
 
 Release History
 ===============
-
-* Update ADLS version(0.0.45).
+0.1.11
+++++++
+* Final release to mark this package as deprecated. Future updates can be found in the azure-cli package.
 
 0.1.10
 ++++++

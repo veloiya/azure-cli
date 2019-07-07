@@ -2,6 +2,10 @@
 
 Release History
 ===============
+0.4.8
++++++
+* Final release to mark this package as deprecated. Future updates can be found in the azure-cli package.
+
 0.4.7
 +++++
 * Return ISO 8601 time strings for archive-window-length and key-frame-interval-duration.

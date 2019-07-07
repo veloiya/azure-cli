@@ -2,6 +2,9 @@
 
 Release History
 ===============
+0.3.13
+++++++
+* Final release to mark this package as deprecated. Future updates can be found in the azure-cli package.
 
 0.3.12
 ++++++
